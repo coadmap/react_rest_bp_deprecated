@@ -12,6 +12,7 @@ const env = dotenv.config().parsed;
 const isDevelopment = env.REACT_APP_ENV === "development";
 
 module.exports = {
+    target: "web",
     mode: isDevelopment ? "development" : "production",
     entry: src + "/index.tsx",
 
@@ -85,12 +86,12 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: publicDir + "/index.html",
-            filename: "index.html"
+            filename: "index.html",
         }),
         new MiniCssExtractPlugin({
             filename: isDevelopment ? "[name].css" : "[name].[hash].css",
             chunkFilename: isDevelopment ? "[id].css" : "[id].[hash].css"
-        })
+        }),
     ],
 
     devServer: {
@@ -98,5 +99,6 @@ module.exports = {
         hot: true,
         open: true,
         historyApiFallback: true,
+        port: 3000
     }
 };
