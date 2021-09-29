@@ -20,17 +20,12 @@ export function useCurrentAccount() {
 
   useEffect(() => {
     if (!token) return;
-
-    const [_head, encodedPayload, _sig] = token.split(".");
-    const payload = JSON.parse(atob(encodedPayload));
-    const accountId = payload.sub;
-    if (typeof accountId !== "string") throw new UnauthorizedError("不正なtokenです");
-
     const fetchAccount = async () => {
       try {
         const res = await HttpClient.request<Account>({
-          method: "GET",
-          url: `${APIHost.APP}/accounts/${accountId}`,
+          method: "POST",
+          url: `${APIHost.AUTH}/auth`,
+          data: { token }
         });
         setAccount(res.data);
       } catch (e) {

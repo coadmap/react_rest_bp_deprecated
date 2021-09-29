@@ -21,7 +21,7 @@ export function useSignInPresenter() {
     try {
       const res = await HttpClient.request<SignInPayload>({
         method: "POST",
-        url: `${APIHost.AUTH}/sign_in`,
+        url: `http://localhost:8000/sign_in`,
         data,
       });
       localStorage.setItem("GULLIVER_WORKS_AUTH_TOKEN", res.data.token);

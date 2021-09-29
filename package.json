@@ -5,7 +5,8 @@
   "scripts": {
     "start": "webpack serve",
     "watch": "webpack --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "mock:start": "json-server -w mockServer/db.json "
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -19,6 +20,7 @@
     "antd": "^4.16.13",
     "axios": "^0.21.1",
     "humps": "^2.0.1",
+    "json-server": "^0.16.3",
     "node-sass": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -51,9 +53,12 @@
     "@babel/register": "^7.14.5",
     "@types/humps": "^2.0.0",
     "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "css-loader": "^5.2.6",
     "dotenv": "^10.0.0",
     "html-webpack-plugin": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
     "mini-css-extract-plugin": "^1.6.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^2.0.0",

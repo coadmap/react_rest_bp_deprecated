@@ -1,12 +1,15 @@
 import axios, { AxiosRequestConfig, AxiosTransformer } from "axios";
 import humps from "humps";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 export const HttpClient = axios.create({
+  headers: {'Access-Control-Allow-Origin': "*"},
   transformResponse: [
     ...((axios.defaults.transformResponse as AxiosTransformer[]) || []),
     (data) => {
       return humps.camelizeKeys(data);
-    },
+    }
   ],
 });
 
