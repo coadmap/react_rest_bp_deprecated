@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import styles from "./style.module.scss";
-import { SignInParams, useSignInPresenter } from "./useSignInPresenter";
+import {SignInParams, SignInPayload, useSignInPresenter} from "./useSignInPresenter";
+import {HttpClient} from "../../utilities/axiosInstance";
+import {APIHost} from "../../utilities/constants";
 
 const SignInPage = () => {
   const { register, handleSubmit } = useForm<SignInParams>();
