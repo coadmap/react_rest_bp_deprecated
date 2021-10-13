@@ -1,7 +1,7 @@
 import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { Account } from "../../data/Account";
 import { HttpClient } from "../../utilities/axiosInstance";
-import {APIHost} from "../../utilities/constants";
+import { APIHost } from "../../utilities/constants";
 
 export type SignInParams = {
   account: {
@@ -27,7 +27,7 @@ export function useSignInPresenter() {
       localStorage.setItem("GULLIVER_WORKS_AUTH_TOKEN", res.data.token);
       setAccount(res.data.account);
     } catch (e) {
-      console.error(e);
+      throw new Error(e);
     }
   };
 
