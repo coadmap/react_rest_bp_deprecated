@@ -2,6 +2,8 @@ import { useCurrentAccount } from "../../hooks/useCurrentAccount";
 import { Account } from "../../data/Account";
 import { HttpClient } from "../../utilities/axiosInstance";
 import { APIHost } from "../../utilities/constants";
+import PersistenceKeys from "../../utilities/persistKeys";
+import { useHistory } from "react-router-dom";
 
 export type SignInParams = {
   account: {
@@ -16,6 +18,7 @@ export type SignInPayload = {
 };
 
 export function useSignInPresenter() {
+  const history = useHistory();
   const { setAccount } = useCurrentAccount();
   const signIn = async (data: SignInParams) => {
     try {
@@ -24,8 +27,9 @@ export function useSignInPresenter() {
         url: `${APIHost.AUTH}/sign_in`,
         data,
       });
-      localStorage.setItem("GULLIVER_WORKS_AUTH_TOKEN", res.data.token);
+      localStorage.setItem(PersistenceKeys.GULLIVER_WORKS_AUTH_TOKEN, res.data.token);
       setAccount(res.data.account);
+      history.push("/");
     } catch (e) {
       throw new Error(e);
     }

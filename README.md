@@ -13,7 +13,7 @@ react-rails-app_backend の api と連携させて使うことを想定してい
 - sass
 - axios
 - react-router-dom
-- ress
+- ant design (モーダル作成時に使用してください)
 - babel の類
 - webpack の類
 
